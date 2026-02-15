@@ -71,7 +71,13 @@ AddEventHandler("CustomDeath:reviveExecute", function(playerName, source)
 	if GetEntityHealth(ped) <= 1 then --if player is dead
 		revivePed(ped)
 		resetTime()
-		exports['413x-notify']:Alert("success", playerName.. " you've been revived.", source.. " has revived you, don't die again~!", 5000)
+		Exports["Noty"].Noty(
+		    "You've Been Revived",
+		    playerName .. ", you've been revived. " .. source .. " has revived you — don't die again~!",
+		    5000,
+		    "success"
+        )
+
 		TriggerServerEvent("CustomDeath:revivePlayerSuccessRelay", playerName)
 	else
 		TriggerServerEvent("CustomDeath:revivePlayerAliveRelay", playerName)
@@ -141,3 +147,4 @@ function resetTime()
 	respawnMinute = RespawnMinute
 	respawnSecond = RespawnSecond
 end
+
