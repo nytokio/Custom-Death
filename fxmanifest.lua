@@ -15,5 +15,6 @@ client_scripts {
 server_script './server/revive_s.lua'
 
 dependencies {
-	'413x-notify'
+	'Noty'
 }
+
