@@ -6,25 +6,44 @@ RegisterNetEvent("CustomDeath:permission")
 
 AddEventHandler("CustomDeath:revive", function(args)
     if args[1] == nil then
-        exports['413x-notify']:Alert("warning", "Enter a PlayerID!", "Please enter a valid player ID", 5000)
+        Exports["Noty"].Noty("Revive Failed", "Please enter a valid Player ID.", 5000, "warning")
     else 
         TriggerServerEvent("CustomDeath:revivePlayerCheck", args)
     end
 end)
 
 AddEventHandler("CustomDeath:revivePlayerNotFound", function(playerServerId)
-    exports['413x-notify']:Alert("error", "Invalid PlayerID!", "Unable to find a player with the ID: " ..playerServerId, 5000)
+    Exports["Noty"].Noty(
+        "Invalid Player ID",
+        "Unable to find a player with the ID: " .. playerServerId,
+        5000,
+        "error"
+    )
 end)
 
 AddEventHandler("CustomDeath:revivePlayerSuccess", function(playerName)
-    exports['413x-notify']:Alert("success", "Player revived!", playerName.. " has been revived!", 5000)
+    Exports["Noty"].Noty(
+        "Player Revived",
+        playerName .. " has been revived successfully.",
+        5000,
+        "success"
+    )
 end)
 
 AddEventHandler("CustomDeath:revivePlayerAlive", function(playerName)
-    exports['413x-notify']:Alert("error", playerName.. " is Alive..", "Can't use necromancy on players who are already alive!", 5000)
+    Exports["Noty"].Noty(
+        "Revive Failed",
+        playerName .. " is already alive.",
+        5000,
+        "error"
+    )
 end)
 
-
 AddEventHandler("CustomDeath:permission", function(source)
-    exports['413x-notify']:Alert("denied", "Access Prohibited!", "You do-not have the required permissions to run this command, please try again if you think this is a mistake.", 7000)
+    Exports["Noty"].Noty(
+        "Access Prohibited",
+        "You do not have the required permissions to run this command.",
+        7000,
+        "error"
+    )
 end)
